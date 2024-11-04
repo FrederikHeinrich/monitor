@@ -71,6 +71,7 @@ jobs:
 
   release:
     needs: [build-windows, build-linux, build-macos]
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
