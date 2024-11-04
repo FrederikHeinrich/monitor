@@ -1,0 +1,6 @@
+influx_url = "http://127.0.0.1:8086"
+influx_token = "xxxxxx"
+influx_org = "homelab"
+influx_bucket = "homelab"
+refresh_rate = 2
+identifier = "%hostname%"

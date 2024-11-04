@@ -1,0 +1,13 @@
+services:
+  monitor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MONITOR_INFLUX_URL: "${INFLUX_URL}"
+      MONITOR_INFLUX_TOKEN: "${INFLUX_TOKEN}"
+      MONITOR_INFLUX_ORG: "${INFLUX_ORG}"
+      MONITOR_INFLUX_BUCKET: "${INFLUX_BUCKET}"
+      MONITOR_REFRESH_RATE: "${REFRESH_RATE:-5}"
+      MONITOR_IDENTIFIER: "${IDENTIFIER:-system_agent}"
+    restart: unless-stopped

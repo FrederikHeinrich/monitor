@@ -1,0 +1,29 @@
+[package]
+name = "monitor"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = [
+    "Frederik Heinrich <mail@FrederikHeinrich.de>"
+]
+
+[dependencies]
+sysinfo = "0.32.0"
+reqwest = { version = "0.12.9", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "time"] }
+dotenv = "0.15"
+influxdb = "0.7.2"
+chrono = "0.4.38"
+config = "0.14.1"
+serde = { version = "1.0.214", features = ["derive"] }
+
+[package.metadata.deb]
+copyright = "2024, Frederik Heinrich"
+maintainer = "Frederik Heinrich <mail@FrederikHeinrich.de>"
+assets = [
+    { source = "target/release/monitor", dest = "/usr/local/bin/", mode = "755" },
+    { source = "packaging/monitor.service", dest = "/etc/systemd/system/", mode = "644" }
+]
+depends = "libc6 (>= 2.33)"
